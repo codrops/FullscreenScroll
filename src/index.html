@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Fullscreen Scrolling Slideshow | Codrops</title>
+		<meta name="description" content="A fullscreen scroll-based slideshow with a content view powered by GreenSock's Observer plugin." />
+		<meta name="keywords" content="observer plugin, gsap, scrolling, slideshow" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="stylesheet" href="https://use.typekit.net/zns7sax.css">
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
+	</head>
+	<body class="loading">
+		<main>
+			<div class="frame">
+				<div class="frame__title"> 
+					<a class="frame__title-prev" href="https://tympanus.net/Development/ImageToContent/">Previous demo</a>
+					<h1 class="frame__title-main">Fullscreen Scrolling Slideshow</h1> 
+					<a aria-label="Back to the article" class="frame__title-back" href="https://tympanus.net/codrops/?p=64521"><span>&rarr;</span></a> 
+				</div>
+				<nav class="frame__nav">
+					<button class="frame__nav-button unbutton">Stronger</button>
+					<button class="frame__nav-button unbutton">No choice</button>
+					<button class="frame__nav-button unbutton">Owned no longer</button>
+					<button class="frame__nav-button unbutton">Assert control</button>
+					<button class="frame__nav-button unbutton">Cold &amp; detached</button>
+				</nav>
+				<button class="frame__back unbutton">
+					<span data-splitting>&larr; Go back</span>
+				</button>
+				<span class="frame__info">&darr; Scroll or drag &darr;</span>
+			</div>
+			<div class="slides">
+				<div class="slide">
+					<div class="slide__inner">
+						<div class="slide__img"><div class="slide__img-inner" style="background-image:url(img/1.jpg)"></div></div>
+						<div class="slide__content">
+							<div class="slide__content-img" style="background-image:url(img/1.jpg)"></div>
+							<h2>Stronger</h2>
+							<p>You strung me along, I thought I was strong, but now you have pushed me under. I’ve opened my eyes, and counted the lies, now it is clearer to me. You are just a user, and an abuser, and I refuse to take it.</p>
+						</div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__inner">
+						<div class="slide__content">
+							<div class="slide__content-img" style="background-image:url(img/2.jpg)"></div>
+							<h2>No choice</h2>
+							<p>Fall into line, you will do as you’re told. No choice fatigue, your blood is running cold. We lose control, the world will fall apart.</p>
+						</div>
+						<div class="slide__img"><div class="slide__img-inner" style="background-image:url(img/2.jpg)"></div></div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__inner">
+						<div class="slide__content">
+							<div class="slide__content-img" style="background-image:url(img/3.jpg)"></div>
+							<h2>Owned no longer</h2>
+							<p>We need a transmutation. One we all conceive. We need a revolution. So long as we stay free.</p>
+						</div>
+						<div class="slide__img"><div class="slide__img-inner" style="background-image:url(img/3.jpg)"></div></div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__inner">
+						<div class="slide__content">
+							<div class="slide__content-img" style="background-image:url(img/4.jpg)"></div>
+							<h2>Assert control</h2>
+							<p>Cornered, I’m exhausted with fear. Our love and compassion dissolved. And demons, have materialised in me. Can’t fight them, they’re taking control.</p>
+						</div>
+						<div class="slide__img"><div class="slide__img-inner" style="background-image:url(img/4.jpg)"></div></div>
+					</div>
+				</div>
+				<div class="slide">
+					<div class="slide__inner">
+						<div class="slide__content">
+							<div class="slide__content-img" style="background-image:url(img/5.jpg)"></div>
+							<h2>Cold &amp; detached</h2>
+							<p>Fate has brought us here to face. Our hopes and dreams erased. Either kill or be killed.</p>
+						</div>
+						<div class="slide__img"><div class="slide__img-inner" style="background-image:url(img/5.jpg)"></div></div>
+					</div>
+				</div>
+			</div>
+			<div class="cursor">
+				<span class="cursor__text" data-splitting>+ Discover more</span>
+			</div>
+		</main>
+		<script src="https://tympanus.net/codrops/adpacks/cda_sponsor.js"></script>
+		<script type="module" src="js/index.js"></script>
+	</body>
+</html>

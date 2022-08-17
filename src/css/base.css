@@ -1,0 +1,338 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	font-size: 13px;
+	--color-text: #fff;
+	--color-bg: #000;
+	--color-link: rgba(255,255,255,0.5);
+	--color-link-hover: #f8c5dc;
+	--color-bg-slide: #171719;
+}
+
+body {
+	margin: 0;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	font-family: obviously, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+/* Page Loader */
+.js .loading::before,
+.js .loading::after {
+	content: '';
+	position: fixed;
+	z-index: 1000;
+}
+
+.js .loading::before {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--color-bg);
+}
+
+.js .loading::after {
+	top: 50%;
+	left: 50%;
+	width: 60px;
+	height: 60px;
+	margin: -30px 0 0 -30px;
+	border-radius: 50%;
+	opacity: 0.4;
+	background: var(--color-link);
+	animation: loaderAnim 0.7s linear infinite alternate forwards;
+
+}
+
+@keyframes loaderAnim {
+	to {
+		opacity: 1;
+		transform: scale3d(0.5,0.5,1);
+	}
+}
+
+a {
+	text-decoration: none;
+	color: var(--color-link);
+	outline: none;
+	cursor: pointer;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	outline: none;
+}
+
+/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+a:focus {
+	/* Provide a fallback style for browsers
+	 that don't support :focus-visible */
+	outline: none;
+	background: lightgrey;
+}
+
+a:focus:not(:focus-visible) {
+	/* Remove the focus indicator on mouse-focus for browsers
+	 that do support :focus-visible */
+	background: transparent;
+}
+
+a:focus-visible {
+	/* Draw a very noticeable focus style for
+	 keyboard-focus on browsers that do support
+	 :focus-visible */
+	outline: 2px solid red;
+	background: transparent;
+}
+
+.unbutton {
+	background: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	cursor: pointer;
+	color: var(--color-link);
+}
+
+.unbutton:focus {
+	outline: none;
+}
+
+.frame {
+	padding: 2.5rem;
+	display: grid;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	z-index: 100;
+	pointer-events: none;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto auto 1fr;
+	grid-gap: 1rem;
+	grid-template-areas: 'back sponsor' 'title title' 'info info' 'nav nav';
+	
+}
+
+.frame a {
+	pointer-events: auto;
+}
+
+.frame__title {
+	grid-area: title;
+	align-self: end;
+	justify-self: end;
+	display: flex;
+	align-items: start;
+}
+
+.frame__title-main {
+	font-size: 1rem;
+	margin: 0 0 0 1rem;
+	font-weight: normal;
+}
+
+.frame__title-back {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	margin-bottom: 0.15rem;
+}
+
+.frame__title-back span {
+	transform: rotate(-45deg);
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+.frame__title-back svg {
+	fill: currentColor;
+}
+
+.frame__info {
+	grid-area: info;
+	align-self: end;
+}
+
+.frame__nav {
+	grid-area: nav;
+	display: grid;
+	grid-auto-flow: row;
+	place-items: start;
+	align-content: end;
+	grid-gap: 0.5rem;
+}
+
+.frame__nav-button {
+	text-transform: uppercase;
+	position: relative;
+	transition: color 0.3s;
+	pointer-events: auto;
+}
+
+.frame__nav-button:not(.frame__nav-button--current):hover {
+	color: var(--color-link-hover);
+}
+
+.frame__nav-button--current {
+	color: var(--color-text);
+}
+
+.frame__nav-button::before {
+	content: '';
+	width: 2.5rem;
+	height: 1px;
+	top: 50%;
+	background-color: currentColor;
+	position: absolute;
+	right: calc(100% + 4px);
+	transform-origin: 100% 50%;
+	transform: scaleX(0);
+	transition: transform 0.8s ease-in-out;
+}
+
+.frame__nav-button--current::before {
+	transform: scaleX(1);
+}
+
+.frame__back {
+	grid-area: back;
+	justify-self: start;
+	opacity: 0;
+	pointer-events: none;
+	text-transform: uppercase;
+}
+
+.frame__back--show {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.slides {
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 100%;
+	place-items: center;
+}
+
+.slide {
+	width: 100%;
+	height: 104%;
+	grid-area: 1 / 1 / -1 / -1;
+	pointer-events: none;
+	opacity: 0;
+	overflow: hidden;
+	position: relative;
+	will-change: transform;
+}
+
+.slide--current {
+	pointer-events: auto;
+	opacity: 1;
+}
+
+.slide__inner {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: 100%;
+	position: relative;
+	overflow: hidden;
+	will-change: transform;
+}
+
+.slide__img {
+	grid-area: 1 / 1 / -1 / -1;
+	overflow: hidden;
+	position: relative;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.slide__img-inner {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	will-change: transform;
+}
+
+.slide__content {
+	grid-area: 1 / 1 / -1 / -1;
+	display: grid;
+	background: var(--color-bg-slide);
+	align-content: center;
+	justify-content: center;
+	display: grid;
+	padding: 1rem;
+	grid-template-rows: auto auto auto;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 2rem;
+	grid-template-areas: 'img title' 'img text' 'img ...' ;
+}
+
+.slide__content-img {
+	height: 300px;
+	background-size: cover;
+	background-position: 50% 50%;
+	grid-area: img;
+	will-change: transform;
+}
+
+.slide__content h2 {
+	grid-area: title;
+	font-weight: 200;
+	font-size: clamp(3rem,2vw,3rem);
+	text-transform: none;
+	margin: 0 0 3rem 0;
+	line-height: 1;
+}
+
+.slide__content p {
+	grid-area: text;
+	max-width: 260px;
+	line-height: 1.5;
+	margin: 0;
+	color: rgba(255,255,255,0.5);
+}
+
+.cursor {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+@media screen and (min-width: 53em) {
+	.frame {
+		grid-template-columns: auto auto auto;
+		grid-template-rows: auto auto;
+		grid-template-areas: 'back ... sponsor' 'nav info title';
+		align-content: space-between;
+	}
+	.frame__info {
+		justify-self: center;
+	}
+	.slide__content {
+		grid-template-rows: auto auto auto;
+		grid-template-columns: 220px 300px;
+		grid-column-gap: 2rem;
+		grid-template-areas: 'img title' 'img text' 'img ...' ;
+	}
+}
